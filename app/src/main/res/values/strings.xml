@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">C5</string>
+    <string name="button_login_text">Войти</string>
+    <string name="text_view_restore_password_text">Не помню пароль</string>
+    <string name="button_register_text">Зарегестрироваться</string>
+    <string name="edit_text_login_text">Введите логин</string>
+    <string name="edit_text_password_text">Введите пароль</string>
 </resources>
