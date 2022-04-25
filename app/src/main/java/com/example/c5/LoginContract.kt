@@ -4,7 +4,7 @@ import androidx.annotation.MainThread
 
 class LoginContract {
 
-    interface LoginView{
+    interface View{
         @MainThread
         fun setProgress()
         @MainThread
@@ -15,9 +15,9 @@ class LoginContract {
         fun setSuccess()
     }
 
-    interface LoginPresenter{
+    interface Presenter{
         fun onLogin(login:String, password:String)
-        fun onAttach(view: LoginView)
-        fun checkCredentials(login: String, password: String)
+        fun onAttach(view: View)
+        fun checkCredentials(login: String, password: String):Boolean
     }
 }
