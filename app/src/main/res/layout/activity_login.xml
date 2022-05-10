@@ -8,48 +8,48 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/edit_text_login"
+        android:id="@+id/login_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="@dimen/edit_text_text_size"
-        android:hint="@string/edit_text_login_text"
+        android:hint="@string/login_text_edit_text"
+        android:importantForAutofill="no"
         android:inputType="text"
-        android:importantForAutofill="no" />
+        android:textSize="@dimen/edit_text_text_size" />
 
     <EditText
-        android:id="@+id/edit_text_password"
+        android:id="@+id/password_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="@dimen/edit_text_text_size"
-        android:hint="@string/edit_text_password_text"
+        android:hint="@string/password_text_edit_text"
+        android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:importantForAutofill="no" />
+        android:textSize="@dimen/edit_text_text_size" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_login"
+        android:id="@+id/login_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/button_login_text"
-        android:textSize="@dimen/button_text_size"/>
+        android:text="@string/login_text_button"
+        android:textSize="@dimen/button_text_size" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/text_view_restore_password"
+        android:id="@+id/restore_password_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_view_restore_password_text"
         android:gravity="center"
-        android:textSize="@dimen/text_view_text_size"/>
+        android:text="@string/restore_password_text_text_view"
+        android:textSize="@dimen/text_view_text_size" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_register"
+        android:id="@+id/register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/button_register_text"
-        android:textSize="@dimen/button_text_size"/>
+        android:text="@string/register_text_button"
+        android:textSize="@dimen/button_text_size" />
 
     <FrameLayout
         android:id="@+id/loading_layout"

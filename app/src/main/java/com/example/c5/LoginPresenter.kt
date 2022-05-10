@@ -3,7 +3,7 @@ package com.example.c5
 import android.os.Handler
 import android.os.Looper
 
-class LoginPresenter: LoginContract.Presenter {
+class LoginPresenter : LoginContract.Presenter {
     private lateinit var view: LoginContract.View
     private val mainThreadHandler = Handler(Looper.getMainLooper())
     private var isSuccess = false
@@ -15,27 +15,31 @@ class LoginPresenter: LoginContract.Presenter {
 
     override fun onLogin(login: String, password: String) {
         view.setProgress()
-        Thread{
+        Thread {
             Thread.sleep(1_000)
-            mainThreadHandler.post{
+            mainThreadHandler.post {
                 view.hideProgress()
-                if (checkCredentials(login,password) && login != "" && password !=""){
+                if (checkCredentials(login, password) && login != "" && password != "") {
                     view.setSuccess()
                     isSuccess = true
                     textError = ""
-                } else{
-                    if(login == ""){
-                        view.setError(errorEmptyLogin)
-                        textError = errorEmptyLogin
-                        isSuccess = false
-                    } else if (password == ""){
-                        view.setError(errorEmptyPassword)
-                        textError = errorEmptyPassword
-                        isSuccess = false
-                    } else {
-                        view.setError(errorWrongLoginDetails)
-                        textError = errorWrongLoginDetails
-                        isSuccess = false
+                } else {
+                    when {
+                        login == "" -> {
+                            view.setError(errorEmptyLogin)
+                            textError = errorEmptyLogin
+                            isSuccess = false
+                        }
+                        password == "" -> {
+                            view.setError(errorEmptyPassword)
+                            textError = errorEmptyPassword
+                            isSuccess = false
+                        }
+                        else -> {
+                            view.setError(errorWrongLoginDetails)
+                            textError = errorWrongLoginDetails
+                            isSuccess = false
+                        }
                     }
                 }
             }
@@ -44,9 +48,9 @@ class LoginPresenter: LoginContract.Presenter {
 
     override fun onAttach(view: LoginContract.View) {
         this.view = view
-        if(isSuccess){
+        if (isSuccess) {
             view.setSuccess()
-        } else{
+        } else {
             view.setError(textError)
         }
     }

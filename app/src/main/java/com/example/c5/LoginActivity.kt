@@ -11,9 +11,10 @@ import androidx.annotation.MainThread
 import androidx.core.view.isVisible
 import com.example.c5.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity(),LoginContract.View {
-    private lateinit var binding:ActivityLoginBinding
+class LoginActivity : AppCompatActivity(), LoginContract.View {
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var presenter: LoginPresenter
+    private var isButtonLoginPressed = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +25,12 @@ class LoginActivity : AppCompatActivity(),LoginContract.View {
         presenter.onAttach(this)
 
 
-        binding.buttonLogin.setOnClickListener{
-            presenter.onLogin(binding.editTextLogin.text.toString(),binding.editTextPassword.text.toString())
+        binding.loginButton.setOnClickListener {
+            isButtonLoginPressed = true
+            presenter.onLogin(
+                binding.loginEditText.text.toString(),
+                binding.passwordEditText.text.toString()
+            )
         }
     }
 
@@ -43,18 +48,22 @@ class LoginActivity : AppCompatActivity(),LoginContract.View {
 
     @MainThread
     override fun setError(error: String) {
-        Toast.makeText(this,"Error: $error",Toast.LENGTH_SHORT).show()
+        if (isButtonLoginPressed){
+            Toast.makeText(this, "Error: $error", Toast.LENGTH_SHORT).show()
+        }
     }
 
     @MainThread
     override fun setSuccess() {
-        binding.editTextLogin.isVisible = false
-        binding.editTextPassword.isVisible = false
-        binding.buttonLogin.isVisible = false
-        binding.buttonRegister.isVisible = false
-        binding.textViewRestorePassword.isVisible = false
+        binding.loginEditText.isVisible = false
+        binding.passwordEditText.isVisible = false
+        binding.loginButton.isVisible = false
+        binding.registerButton.isVisible = false
+        binding.restorePasswordTextView.isVisible = false
         binding.root.setBackgroundColor(Color.GREEN)
-        Toast.makeText(this, "Успешно", Toast.LENGTH_SHORT).show()
+        if(isButtonLoginPressed){
+            Toast.makeText(this, "Успешно", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun View.hideKeyboard() {
@@ -63,9 +72,9 @@ class LoginActivity : AppCompatActivity(),LoginContract.View {
     }
 
 
-    private fun restorePresenter(): LoginPresenter{
+    private fun restorePresenter(): LoginPresenter {
         val presenter = lastCustomNonConfigurationInstance as? LoginPresenter
-        return presenter?: LoginPresenter()
+        return presenter ?: LoginPresenter()
     }
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {
