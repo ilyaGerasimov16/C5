@@ -1,8 +1,8 @@
 package com.example.c5
 
-class MockLoginApi:LoginApi {
+class MockLoginApi : LoginApi {
     override fun login(login: String, password: String): Boolean {
-        return login==password
+        return login == password
     }
 
     override fun register(login: String, password: String, email: String): Boolean {
