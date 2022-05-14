@@ -1,13 +1,16 @@
-package com.example.c5
+package com.example.c5.ui.login
 
 import android.os.Handler
 import android.os.Looper
+import com.example.c5.domain.LoginApi
+import com.example.c5.data.MockLoginApi
 
 class LoginPresenter : LoginContract.Presenter {
     private lateinit var view: LoginContract.View
     private val mainThreadHandler = Handler(Looper.getMainLooper())
     private var isSuccess = false
     private var textError = ""
+    private val loginApi: LoginApi = MockLoginApi()
 
     private val errorEmptyLogin = "Введите логин!"
     private val errorEmptyPassword = "Введите пароль!"
@@ -16,10 +19,10 @@ class LoginPresenter : LoginContract.Presenter {
     override fun onLogin(login: String, password: String) {
         view.setProgress()
         Thread {
-            Thread.sleep(1_000)
+            val success = loginApi.login(login,password)
             mainThreadHandler.post {
                 view.hideProgress()
-                if (checkCredentials(login, password) && login != "" && password != "") {
+                if (success) {
                     view.setSuccess()
                     isSuccess = true
                     textError = ""
@@ -56,6 +59,6 @@ class LoginPresenter : LoginContract.Presenter {
     }
 
     override fun checkCredentials(login: String, password: String): Boolean {
-        return login == password
+        return login == password && login != "" && password != ""
     }
 }

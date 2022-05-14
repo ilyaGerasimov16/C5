@@ -1,4 +1,4 @@
-package com.example.c5
+package com.example.c5.ui.login
 
 import android.content.Context
 import android.graphics.Color

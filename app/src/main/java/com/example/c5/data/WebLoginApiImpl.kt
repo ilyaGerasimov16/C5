@@ -1,19 +1,21 @@
-package com.example.c5
+package com.example.c5.data
 
-class MockLoginApi : LoginApi {
+import com.example.c5.domain.LoginApi
+
+class WebLoginApiImpl: LoginApi {
     override fun login(login: String, password: String): Boolean {
-        return login == password
+        TODO("Not yet implemented")
     }
 
     override fun register(login: String, password: String, email: String): Boolean {
-        return login.isNotEmpty() && password.isNotEmpty()
+        TODO("Not yet implemented")
     }
 
     override fun logout(): Boolean {
-        return true
+        TODO("Not yet implemented")
     }
 
     override fun forgotPassword(login: String): Boolean {
-        return true
+        TODO("Not yet implemented")
     }
 }

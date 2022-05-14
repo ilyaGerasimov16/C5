@@ -1,4 +1,4 @@
-package com.example.c5
+package com.example.c5.domain
 
 interface LoginApi {
     fun login(login:String, password:String):Boolean
