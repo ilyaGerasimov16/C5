@@ -2,10 +2,10 @@ package com.example.c5.data
 
 import com.example.c5.domain.LoginApi
 
-class MockLoginApi : LoginApi {
+class MockLoginApiImpl : LoginApi {
     override fun login(login: String, password: String): Boolean {
         Thread.sleep(1_000)
-        return login == password
+        return login == password && login != "" && password != ""
     }
 
     override fun register(login: String, password: String, email: String): Boolean {
