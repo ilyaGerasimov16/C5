@@ -19,7 +19,10 @@ class LoginContract {
     }
 
     interface Presenter {
+        @MainThread
         fun onLogin(login: String, password: String)
+
+        @MainThread
         fun onAttach(view: View)
     }
 }
