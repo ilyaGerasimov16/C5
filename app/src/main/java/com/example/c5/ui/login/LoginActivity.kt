@@ -1,4 +1,4 @@
-package com.example.c5
+package com.example.c5.ui.login
 
 import android.content.Context
 import android.graphics.Color
@@ -9,6 +9,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.MainThread
 import androidx.core.view.isVisible
+import com.example.c5.app
 import com.example.c5.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(), LoginContract.View {
@@ -74,7 +75,7 @@ class LoginActivity : AppCompatActivity(), LoginContract.View {
 
     private fun restorePresenter(): LoginPresenter {
         val presenter = lastCustomNonConfigurationInstance as? LoginPresenter
-        return presenter ?: LoginPresenter()
+        return presenter ?: LoginPresenter(app.loginUsecase)
     }
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {

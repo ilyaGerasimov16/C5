@@ -1,8 +1,8 @@
-package com.example.c5
+package com.example.c5.ui.login
 
 import androidx.annotation.MainThread
 
-class LoginContract {
+interface LoginContract {
 
     interface View {
         @MainThread
@@ -19,8 +19,10 @@ class LoginContract {
     }
 
     interface Presenter {
+        @MainThread
         fun onLogin(login: String, password: String)
+
+        @MainThread
         fun onAttach(view: View)
-        fun checkCredentials(login: String, password: String): Boolean
     }
 }
