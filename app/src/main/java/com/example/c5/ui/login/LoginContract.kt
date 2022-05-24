@@ -2,7 +2,7 @@ package com.example.c5.ui.login
 
 import androidx.annotation.MainThread
 
-class LoginContract {
+interface LoginContract {
 
     interface View {
         @MainThread

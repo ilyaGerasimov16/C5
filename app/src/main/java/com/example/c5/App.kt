@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import com.example.c5.data.LoginUsecaseImpl
-import com.example.c5.data.MockLoginApiImpl
+import com.example.c5.data.api.MockLoginApiImpl
 import com.example.c5.domain.LoginApi
 import com.example.c5.domain.LoginUsecase
 

@@ -1,4 +1,4 @@
-package com.example.c5.data
+package com.example.c5.data.api
 
 import com.example.c5.domain.LoginApi
 
